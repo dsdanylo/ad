@@ -2,59 +2,79 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <title>Teste WebView com Banner</title>
+    <title>Banner de Anúncio</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f2f2f2;
         }
 
-        /* Banner */
-        .banner {
-            background-color: #4CAF50;
+        .ad-banner {
+            position: relative;
+            width: 600px;
+            height: 200px;
+            background-image: url('https://via.placeholder.com/600x200.png?text=Anuncio+Exemplo');
+            background-size: cover;
+            background-position: center;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
             color: white;
             text-align: center;
-            padding: 40px 20px;
-            font-size: 24px;
-            font-weight: bold;
-        }
-
-        /* Conteúdo abaixo do banner */
-        .content {
             padding: 20px;
         }
 
-        button {
-            padding: 10px 20px;
-            font-size: 16px;
-            margin-top: 10px;
+        .ad-banner h2 {
+            margin: 0;
+            font-size: 28px;
+            text-shadow: 1px 1px 4px rgba(0,0,0,0.6);
         }
 
-        input {
-            padding: 8px;
+        .ad-banner p {
+            margin: 10px 0;
+            font-size: 18px;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+        }
+
+        .ad-banner button {
+            padding: 10px 25px;
             font-size: 16px;
+            font-weight: bold;
+            border: none;
+            border-radius: 6px;
+            background-color: #ff9800;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .ad-banner button:hover {
+            background-color: #e68900;
         }
     </style>
 </head>
 <body>
-    <div class="banner">
-        Bem-vindo ao Teste do WebView!
-    </div>
-
-    <div class="content">
-        <p>Digite uma mensagem e clique no botão:</p>
-        <input type="text" id="mensagem" placeholder="Sua mensagem aqui">
-        <button onclick="enviarMensagem()">Enviar</button>
+    <div class="ad-banner">
+        <h2>Oferta Especial!</h2>
+        <p>Não perca esta oportunidade única.</p>
+        <button onclick="clicarAnuncio()">Saiba Mais</button>
     </div>
 
     <script>
-        function enviarMensagem() {
-            const msg = document.getElementById('mensagem').value;
-            if (msg && window.flet) {
-                window.flet.sendMessage(msg);
+        function clicarAnuncio() {
+            if (window.flet) {
+                window.flet.sendMessage("Anúncio clicado!");
             } else {
-                alert("Mensagem vazia ou WebView não disponível!");
+                alert("Anúncio clicado!");
             }
         }
     </script>
